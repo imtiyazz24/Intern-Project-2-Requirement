@@ -1,12 +1,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const route = require('./routes/route.js');
-const { default: mongoose } = require('mongoose');
+const  mongoose = require('mongoose');
 const app = express();
 
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-
+app
+.use(bodyParser.json());
 
 mongoose.connect("mongodb+srv://imtiyaz786:ansari@imtiyazansari.mol1y.mongodb.net/group39Database", {
     useNewUrlParser: true
@@ -15,6 +14,8 @@ mongoose.connect("mongodb+srv://imtiyaz786:ansari@imtiyazansari.mol1y.mongodb.ne
 .catch ( err => console.log(err) )
 
 app.use('/', route);
+
+
 
 
 app.listen(process.env.PORT || 3000, function () {
